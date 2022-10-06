@@ -64,7 +64,22 @@ public class Haromszog  extends Sokszog{
 
     @Override
     public String toString() {
-        return String.format("Háromszög: a = %-10.3f  b = %-10.3f  c = %-10.3f K = %-10.3f T = %-10.3f",
-        this.getA(),this.getB(),this.getC(),this.getKerulet(),this.getTerulet());
+        return String.format("Háromszög: a = %-10.3f  b = %-10.3f  c = %-10.3f %s",
+        this.getA(),this.getB(),this.getC(), super.toString());
+    }
+    
+    public Haromszog(){
+        super(Math.random() * 10 + 5);
+        this.b = Math.random() * 10 + 5;
+        this.c =  veletlenoldalgeneralas();
+        while (!this.isSzerkesztheto()){
+            super.setA(veletlenoldalgeneralas());
+            this.b = veletlenoldalgeneralas();
+            this.c = veletlenoldalgeneralas();
+        }
+    }
+
+    private double  veletlenoldalgeneralas() {
+        return Math.random() * 10 + 5;
     }
 }
